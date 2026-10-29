@@ -805,11 +805,10 @@
       })(t0);
     });
 
-    if (reduzir) { gelo.remove(); $('dica').remove(); $('abrirAlt').remove(); document.body.classList.remove('locked'); document.body.classList.add('aberto'); }
-    else pintarGelo();
+    pintarGelo(); // o vidro aparece sempre (mesmo com "reduzir movimento" ligado no celular)
     let larguraAntes = innerWidth;
     addEventListener('resize', () => {           // só repinta se girar o celular antes de abrir
-      if (!aberto && !reduzir && Math.abs(innerWidth - larguraAntes) > 40) { larguraAntes = innerWidth; pintarGelo(); }
+      if (!aberto && Math.abs(innerWidth - larguraAntes) > 40) { larguraAntes = innerWidth; pintarGelo(); }
     });
 
     /* ---------- Entrada suave das seções ao rolar ---------- */
@@ -819,7 +818,6 @@
       }), { threshold: .2, rootMargin: '0px 0px -8% 0px' });
       document.querySelectorAll('main .rv').forEach((el) => io.observe(el));
     }
-    if (reduzir) observar();
   </script>
 </body>
 </html>
