@@ -168,7 +168,7 @@
     .pedido p{margin-top:16px;font-size:15px;line-height:1.75;color:var(--ice);font-weight:300}
     .pedido p + p{margin-top:10px;font-family:var(--serif);font-style:italic;font-size:1.12rem}
 
-    .local h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.8rem,13vw,3.8rem);line-height:1}
+    .local h3,.traje h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.8rem,13vw,3.8rem);line-height:1}
     .local .end{margin-top:18px;font-size:15px;line-height:1.65;color:var(--ice);font-weight:300}
     .local .ref{margin-top:6px;font-size:12.5px;color:var(--mist)}
     .links{display:flex;justify-content:center;gap:10px;margin-top:26px;flex-wrap:wrap}
@@ -295,6 +295,11 @@
       </div>
     </section>
 
+    <section class="sec traje" id="sec-traje">
+      <span class="wide rv">Traje</span>
+      <h3 class="holo rv d1" id="f-traje"></h3>
+    </section>
+
     <section class="sec" id="sec-pedido">
       <div class="pedido rv"><i class="c3"></i><i class="c4"></i>
         <span class="wide" style="margin-bottom:16px">Com carinho</span>
@@ -363,8 +368,9 @@
       texto: 'Em uma noite de inverno, entre luzes, cristais e flocos de neve, vou celebrar meus 15 anos. Será uma honra ter você comigo nesse baile, para viver cada momento dessa noite dos sonhos.',
       observacao: 'Para que a debutante brilhe ainda mais em sua noite dos sonhos, pedimos, com carinho, que os convidados evitem o uso de azul-claro em seus looks.',
       observacao2: 'Contamos com a compreensão e o carinho de todos! 💙',
+      traje: 'Esporte fino',   // vazio ('') = some do convite
       fonteNome: 'pinyon',     // letra do nome: 'playfair' (itálico) | 'greatvibes' (cursiva) | 'pinyon' (caligrafia)
-      musica: true,            // false = convite sem música
+      musica: false,           // true = com música | false = convite sem som nenhum
       volume: 0.55,            // 0 a 1
       duracaoHoras: 5          // usado só no "Salvar na agenda"
     };
@@ -408,6 +414,7 @@
       if (CONFIG.observacao2) $('f-obs2').textContent = CONFIG.observacao2; else $('f-obs2').remove();
     } else $('sec-pedido').remove();
 
+    if (CONFIG.traje) $('f-traje').textContent = CONFIG.traje; else $('sec-traje').remove();
     $('f-local').textContent = CONFIG.local;
     if (CONFIG.endereco) {
       $('f-endereco').textContent = [CONFIG.endereco, CONFIG.cidade].filter(Boolean).join(', ');
@@ -454,7 +461,7 @@
       const local = [CONFIG.local, CONFIG.endereco.replace(' — ', ', '), CONFIG.cidade].filter(Boolean).join(', ');
       const titulo = `15 anos da ${CONFIG.nome}`;
       const hora = CONFIG.horario ? ` • Chegada dos convidados às ${Number(CONFIG.horario.split(':')[0])}h` : '';
-      const detalhes = `Baile de Inverno${hora}\n${CONFIG.referencia}\nPedido: evite looks em azul-claro 💙`;
+      const detalhes = `Baile de Inverno${hora}${CONFIG.traje ? `\nTraje: ${CONFIG.traje}` : ''}\n${CONFIG.referencia}\nPedido: evite looks em azul-claro 💙`;
       let datas, icsInicio, icsFim, alarme;
       if (CONFIG.horario) {
         const fim = new Date(inicio.getTime() + CONFIG.duracaoHoras * 3600000);
