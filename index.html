@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Mariana • XV Anos • Baile de Inverno</title>
+  <title>Mariana • 15 Anos • Baile de Inverno</title>
   <meta name="description" content="Você está convidado(a) para o Baile de Inverno dos 15 anos da Mariana — 28/11/2026, Buffet Piatto." />
   <!-- Prévia do WhatsApp: se o subdomínio for outro, troque o endereço abaixo -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://marianaxv.convidaeu.com.br/" />
-  <meta property="og:title" content="Mariana • XV Anos" />
+  <meta property="og:title" content="Mariana • 15 Anos" />
   <meta property="og:description" content="Baile de Inverno • 28.11.2026 • Buffet Piatto — toque para abrir o convite 💙" />
   <meta property="og:image" content="https://marianaxv.convidaeu.com.br/og.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -17,13 +17,13 @@
   <meta name="theme-color" content="#001c4d" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Great+Vibes&family=Pinyon+Script&family=Manrope:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
       --royal-950:#000f2e; --royal-900:#001c4d; --royal-800:#013684; --royal-700:#0d4aa6; --royal-500:#2f6fd0;
       --ice:#e8eff9; --mist:rgba(232,239,249,.72); --hair:rgba(220,232,250,.32);
       --tx:0; --ty:0;
-      --serif:'Bodoni Moda',Didot,'Times New Roman',serif;
+      --serif:'Playfair Display',Georgia,'Times New Roman',serif;
       --wide:'Syncopate','Manrope',system-ui,sans-serif;
       --sans:'Manrope',system-ui,sans-serif;
     }
@@ -70,24 +70,26 @@
     /* ================= HERO (primeira tela) ================= */
     .hero{position:relative;z-index:2;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
       text-align:center;padding:calc(56px + env(safe-area-inset-top)) 18px 110px}
+    .tema-hero{font-family:var(--serif);font-weight:500;text-transform:uppercase;font-size:clamp(1.05rem,5.2vw,1.45rem);letter-spacing:.26em;padding-left:.26em;color:#fff;
+      text-shadow:0 0 18px rgba(170,205,255,.45)}
     .cristal{width:86px;height:86px;margin:26px auto 18px;display:block;animation:gira 60s linear infinite;
       transform-origin:center;filter:drop-shadow(0 0 10px rgba(190,215,255,.55))}
     @keyframes gira{to{transform:rotate(360deg)}}
-    .nome{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(4.4rem,23vw,8.4rem);line-height:.92;letter-spacing:-.01em;
+    .nome{font-family:var(--fonte-nome,var(--serif));font-style:var(--estilo-nome,italic);font-weight:var(--peso-nome,500);font-size:calc(clamp(3.9rem,19vw,7.4rem) * var(--escala-nome,1));line-height:1.08;letter-spacing:0;
       padding:.08em .12em .14em}
     .xv{display:flex;align-items:center;gap:14px;margin-top:14px}
     .xv .fio{width:52px}
     .xv b{font-family:var(--wide);font-weight:400;font-size:11px;text-transform:uppercase;letter-spacing:.62em;padding-left:.62em;color:#fff}
-    .hero-data{margin-top:34px;font-family:var(--serif);font-size:1.15rem;letter-spacing:.32em;color:var(--ice)}
+    .hero-data{margin-top:34px;font-variant-numeric:lining-nums;font-family:var(--serif);font-size:1.15rem;letter-spacing:.32em;color:var(--ice)}
     .role{position:absolute;left:50%;bottom:calc(34px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
       opacity:0;transition:opacity 1s ease 1.2s}
     .aberto .role{opacity:1}
     .role i{display:block;width:1px;height:42px;background:linear-gradient(#fff,transparent);transform-origin:top;animation:desce 2.2s ease-in-out infinite}
     @keyframes desce{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
     /* faixa de luz que passa pelo nome quando o gelo some */
-    .nome-wrap{position:relative;overflow:hidden}
+    .nome-wrap{position:relative}
     .nome-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);
-      transform:translateX(-120%);mix-blend-mode:overlay;pointer-events:none}
+      transform:translateX(-120%);opacity:.45;pointer-events:none}
     .aberto .nome-wrap::after{animation:varre 1.6s ease .3s 1 forwards}
     @keyframes varre{to{transform:translateX(120%)}}
 
@@ -140,7 +142,7 @@
     .foto{max-width:300px;margin:0 auto;padding:10px;border:1px solid var(--hair);border-radius:200px 200px 18px 18px}
     .foto img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:190px 190px 12px 12px}
 
-    .data-grande{font-family:var(--serif);font-weight:400;font-size:clamp(6rem,34vw,10.5rem);line-height:.86;letter-spacing:-.03em}
+    .data-grande{font-family:var(--serif);font-weight:400;font-variant-numeric:lining-nums;font-size:clamp(6rem,34vw,10.5rem);line-height:.86;letter-spacing:-.03em}
     .data-grande .pt{font-size:.5em;vertical-align:.32em;margin:0 .02em}
     .data-sub{margin-top:18px}
     .hora{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-top:38px}
@@ -200,7 +202,7 @@
     .agenda svg{width:15px;height:15px}
 
     .fim{padding:40px 24px calc(40px + env(safe-area-inset-bottom));text-align:center}
-    .fim .assin{font-family:var(--serif);font-style:italic;font-size:1.5rem}
+    .fim .assin{font-family:var(--fonte-nome,var(--serif));font-style:var(--estilo-nome,italic);font-size:calc(1.6rem * var(--escala-nome,1))}
     .fim .wide{display:block;margin-top:10px;font-size:8.5px}
     .fim .marca{margin-top:46px;font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.05em}
     .fim .marca a{color:rgba(255,255,255,.85);font-weight:600;text-decoration:none}
@@ -243,7 +245,7 @@
   <main id="convite">
     <!-- ===== HERO ===== -->
     <header class="hero" id="hero">
-      <p class="wide">Baile de Inverno</p>
+      <p class="tema-hero">Baile de Inverno</p>
 
       <svg class="cristal" viewBox="-50 -50 100 100" aria-hidden="true">
         <defs>
@@ -263,7 +265,7 @@
       </svg>
 
       <div class="nome-wrap"><h1 class="nome holo brilho" id="f-nome">Mariana</h1></div>
-      <div class="xv"><span class="fio"></span><b>XV Anos</b><span class="fio"></span></div>
+      <div class="xv"><span class="fio"></span><b>15 Anos</b><span class="fio"></span></div>
       <p class="hero-data" id="f-hero-data">28 · 11 · 2026</p>
 
       <div class="role" aria-hidden="true"><span class="wide" style="font-size:8px">role</span><i></i></div>
@@ -361,6 +363,7 @@
       texto: 'Em uma noite de inverno, entre luzes, cristais e flocos de neve, vou celebrar meus 15 anos. Será uma honra ter você comigo nesse baile, para viver cada momento dessa noite dos sonhos.',
       observacao: 'Para que a debutante brilhe ainda mais em sua noite dos sonhos, pedimos, com carinho, que os convidados evitem o uso de azul-claro em seus looks.',
       observacao2: 'Contamos com a compreensão e o carinho de todos! 💙',
+      fonteNome: 'pinyon',     // letra do nome: 'playfair' (itálico) | 'greatvibes' (cursiva) | 'pinyon' (caligrafia)
       musica: true,            // false = convite sem música
       volume: 0.55,            // 0 a 1
       duracaoHoras: 5          // usado só no "Salvar na agenda"
@@ -373,13 +376,25 @@
     const semana = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
     const inicio = new Date(`${CONFIG.data}T${CONFIG.horario || '00:00'}:00-03:00`); // horário de Brasília
 
+    /* ---------- Letra do nome ---------- */
+    (function(){
+      const F = {
+        playfair:   ["'Playfair Display',Georgia,serif", 'italic', '500', 1],
+        greatvibes: ["'Great Vibes',cursive", 'normal', '400', 1.2],
+        pinyon:     ["'Pinyon Script',cursive", 'normal', '400', 1.05]
+      }[CONFIG.fonteNome] || ["'Playfair Display',Georgia,serif", 'italic', '500', 1];
+      const st = document.documentElement.style;
+      st.setProperty('--fonte-nome', F[0]); st.setProperty('--estilo-nome', F[1]);
+      st.setProperty('--peso-nome', F[2]); st.setProperty('--escala-nome', F[3]);
+    })();
+
     /* ---------- Textos ---------- */
     $('f-nome').textContent = CONFIG.nome;
     $('f-assin').textContent = CONFIG.nome;
     $('f-hero-data').textContent = `${dia} · ${mes} · ${ano}`;
     $('f-data-grande').innerHTML = `${dia}<span class="pt">.</span>${mes}`;
     $('f-semana').textContent = `${semana[new Date(`${CONFIG.data}T12:00:00-03:00`).getUTCDay()]} · ${ano}`;
-    $('f-assin2').textContent = `XV Anos · ${dia}.${mes}.${ano}`;
+    $('f-assin2').textContent = `15 Anos · ${dia}.${mes}.${ano}`;
     if (CONFIG.texto) $('f-texto').textContent = CONFIG.texto; else $('f-texto').closest('section').remove();
     if (!CONFIG.musica) $('abrirAlt').textContent = 'ou toque aqui para abrir';
 
@@ -538,22 +553,24 @@
     })(0);
 
     /* =========================================================
-       MÚSICA — valsa de caixinha de música, composta e tocada
-       pelo próprio navegador (não usa arquivo de áudio).
+       MÚSICA — faixa eletrônica original (pista, estilo "Alok"),
+       tocada pelo próprio navegador (não usa arquivo de áudio).
        ========================================================= */
     const Musica = (() => {
-      let ctx, master, bus, lp, ligada = false, prox = 0, compasso = 0;
-      const BEAT = 60 / 84;
+      let ctx, master, bus, duck, delayIn, ruido, ligada = false, prox = 0, passo = 0;
+      const BPM = 124, SEMI = 60 / BPM / 4;            // duração de 1/16
       const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
-      const ACORDE = { D:[62,66,69], Bm:[59,62,66], G:[55,59,62], A:[57,61,64], Fm:[54,57,61] };
-      const BAIXO  = { D:50, Bm:47, G:43, A:45, Fm:42 };
-      const SEQ = ['D','Bm','G','A', 'D','Fm','G','A', 'Bm','G','D','A', 'G','A','D','D'];
-      const MELODIA = [
-        [[78,2],[81,1]], [[83,2],[81,1]], [[79,1],[78,1],[76,1]], [[76,2],[73,1]],
-        [[74,2],[78,1]], [[81,2],[85,1]], [[83,1],[81,1],[79,1]], [[81,3]],
-        [[86,2],[83,1]], [[83,2],[79,1]], [[81,2],[78,1]], [[76,2],[81,1]],
-        [[79,1],[83,1],[86,1]], [[85,1.5],[83,.5],[81,1]], [[78,1],[81,1],[86,1]], [[86,3]]
+      // Si menor – Sol – Ré – Lá
+      const ACORDES = [[59,62,66,71], [59,62,67,71], [57,62,66,69], [57,61,64,69]];
+      const BAIXO = [47, 43, 50, 45];
+      const LEAD = [
+        {0:78, 3:81, 6:83, 8:81, 10:78, 12:76, 14:78},
+        {0:83, 3:81, 6:79, 8:78, 10:79, 12:83, 14:81},
+        {0:81, 3:78, 6:74, 8:78, 10:81, 12:86, 14:85},
+        {0:85, 3:83, 6:81, 8:76, 10:81, 12:83, 14:85}
       ];
+      const INTRO = 2;                                 // compassos sem batida antes do "drop"
+
       function eco(seg) {
         const len = Math.floor(ctx.sampleRate * seg), buf = ctx.createBuffer(2, len, ctx.sampleRate);
         for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3); }
@@ -562,59 +579,93 @@
       function montar() {
         const AC = window.AudioContext || window.webkitAudioContext;
         ctx = new AC();
-        const comp = ctx.createDynamicsCompressor();
+        const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
         master = ctx.createGain(); master.gain.value = 0.0001;
-        bus = ctx.createGain();
-        const seco = ctx.createGain(); seco.gain.value = 0.8;
-        const molhado = ctx.createGain(); molhado.gain.value = 0.5;
-        const rev = ctx.createConvolver(); rev.buffer = eco(2.8);
-        bus.connect(seco); bus.connect(rev); rev.connect(molhado);
-        seco.connect(master); molhado.connect(master);
+        bus = ctx.createGain(); bus.connect(master);
+        const rev = ctx.createConvolver(); rev.buffer = eco(2.2);
+        const molhado = ctx.createGain(); molhado.gain.value = 0.28;
+        bus.connect(rev); rev.connect(molhado); molhado.connect(master);
+        duck = ctx.createGain(); duck.connect(bus);     // acordes "respiram" a cada batida
+        delayIn = ctx.createGain();                     // eco rítmico da melodia
+        const dl = ctx.createDelay(1); dl.delayTime.value = SEMI * 3;
+        const fb = ctx.createGain(); fb.gain.value = 0.32;
+        const dw = ctx.createGain(); dw.gain.value = 0.3;
+        delayIn.connect(bus); delayIn.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(dw); dw.connect(bus);
         master.connect(comp); comp.connect(ctx.destination);
-        lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; lp.connect(bus);
+        ruido = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+        const d = ruido.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
       }
-      function caixinha(m, t, vol, dur = 2.4) {
-        const f = hz(m);
-        [[1, 1, dur], [2, .26, dur * .5], [3.98, .07, dur * .22]].forEach(([mul, g, d]) => {
-          const o = ctx.createOscillator(), a = ctx.createGain();
-          o.type = 'sine'; o.frequency.value = f * mul;
-          a.gain.setValueAtTime(0.0001, t);
-          a.gain.exponentialRampToValueAtTime(vol * g, t + 0.006);
-          a.gain.exponentialRampToValueAtTime(0.0001, t + d);
-          o.connect(a); a.connect(bus); o.start(t); o.stop(t + d + 0.05);
-        });
+      function env(a, t, pico, dur, ataque = 0.004) {
+        a.gain.setValueAtTime(0.0001, t);
+        a.gain.exponentialRampToValueAtTime(pico, t + ataque);
+        a.gain.exponentialRampToValueAtTime(0.0001, t + dur);
       }
-      function fundo(notas, t, dur) {
-        notas.forEach((m) => [-5, 5].forEach((det) => {
+      function bumbo(t) {
+        const o = ctx.createOscillator(), a = ctx.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(165, t); o.frequency.exponentialRampToValueAtTime(48, t + 0.12);
+        env(a, t, 0.95, 0.38); o.connect(a); a.connect(master); o.start(t); o.stop(t + 0.4);
+        chiado(t, 0.06, 0.012, 'lowpass', 3500);
+        duck.gain.cancelScheduledValues(t);
+        duck.gain.setValueAtTime(0.3, t); duck.gain.linearRampToValueAtTime(1, t + 0.24);
+      }
+      function chiado(t, vol, dur, tipo, freq) {
+        const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), a = ctx.createGain();
+        s.buffer = ruido; f.type = tipo; f.frequency.value = freq;
+        env(a, t, vol, dur, 0.002); s.connect(f); f.connect(a); a.connect(bus);
+        s.start(t, Math.random() * 0.9, dur + 0.03);
+      }
+      function palma(t) {
+        chiado(t, 0.16, 0.02, 'bandpass', 1400); chiado(t + 0.012, 0.16, 0.02, 'bandpass', 1400);
+        chiado(t + 0.024, 0.3, 0.17, 'bandpass', 1300);
+      }
+      function baixo(m, t, dur) {
+        const o = ctx.createOscillator(), sub = ctx.createOscillator(), f = ctx.createBiquadFilter(), a = ctx.createGain(), as = ctx.createGain();
+        o.type = 'sawtooth'; o.frequency.value = hz(m); sub.type = 'sine'; sub.frequency.value = hz(m);
+        f.type = 'lowpass'; f.Q.value = 6;
+        f.frequency.setValueAtTime(220, t); f.frequency.exponentialRampToValueAtTime(1100, t + 0.03); f.frequency.exponentialRampToValueAtTime(260, t + dur);
+        env(a, t, 0.28, dur); env(as, t, 0.22, dur);
+        o.connect(f); f.connect(a); a.connect(master); sub.connect(as); as.connect(master);
+        o.start(t); sub.start(t); o.stop(t + dur + 0.05); sub.stop(t + dur + 0.05);
+      }
+      function acorde(notas, t, dur, vol) {
+        const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 1900; f.connect(duck);
+        notas.forEach((m) => [-9, 0, 9].forEach((det) => {
           const o = ctx.createOscillator(), a = ctx.createGain();
-          o.type = 'triangle'; o.frequency.value = hz(m); o.detune.value = det;
-          a.gain.setValueAtTime(0.0001, t);
-          a.gain.linearRampToValueAtTime(0.022, t + 0.7);
-          a.gain.setValueAtTime(0.022, t + dur - 0.2);
-          a.gain.linearRampToValueAtTime(0.0001, t + dur + 0.7);
-          o.connect(a); a.connect(lp); o.start(t); o.stop(t + dur + 0.8);
+          o.type = 'sawtooth'; o.frequency.value = hz(m); o.detune.value = det;
+          a.gain.setValueAtTime(0.0001, t); a.gain.linearRampToValueAtTime(vol, t + 0.03);
+          a.gain.setValueAtTime(vol, t + dur - 0.08); a.gain.linearRampToValueAtTime(0.0001, t + dur + 0.12);
+          o.connect(a); a.connect(f); o.start(t); o.stop(t + dur + 0.15);
         }));
       }
-      function baixo(m, t) {
-        [[1, .16], [2, .07]].forEach(([mul, g]) => {
-          const o = ctx.createOscillator(), a = ctx.createGain();
-          o.type = 'sine'; o.frequency.value = hz(m) * mul;
-          a.gain.setValueAtTime(0.0001, t);
-          a.gain.exponentialRampToValueAtTime(g, t + 0.02);
-          a.gain.exponentialRampToValueAtTime(0.0001, t + 1.8);
-          o.connect(a); a.connect(bus); o.start(t); o.stop(t + 1.9);
-        });
+      function pluck(m, t, vol) {
+        const o = ctx.createOscillator(), f = ctx.createBiquadFilter(), a = ctx.createGain();
+        o.type = 'square'; o.frequency.value = hz(m);
+        f.type = 'lowpass'; f.frequency.setValueAtTime(4200, t); f.frequency.exponentialRampToValueAtTime(600, t + 0.22);
+        env(a, t, vol, 0.32); o.connect(f); f.connect(a); a.connect(delayIn); o.start(t); o.stop(t + 0.35);
+      }
+      function subida(t, dur) {                         // "chiado" que sobe antes da batida entrar
+        const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), a = ctx.createGain();
+        s.buffer = ruido; s.loop = true; f.type = 'highpass';
+        f.frequency.setValueAtTime(300, t); f.frequency.exponentialRampToValueAtTime(7000, t + dur);
+        a.gain.setValueAtTime(0.0001, t); a.gain.exponentialRampToValueAtTime(0.16, t + dur); a.gain.linearRampToValueAtTime(0.0001, t + dur + 0.05);
+        s.connect(f); f.connect(a); a.connect(bus); s.start(t); s.stop(t + dur + 0.06);
       }
       function agendar() {
-        while (prox < ctx.currentTime + 0.6) {
-          const n = compasso % SEQ.length, c = SEQ[n], t = prox;
-          fundo(ACORDE[c], t, BEAT * 3);
-          baixo(BAIXO[c], t);
-          [1, 2].forEach((b) => ACORDE[c].slice(1).forEach((m) => caixinha(m, t + b * BEAT, 0.045, 1.1)));
-          let off = 0;
-          MELODIA[n].forEach(([m, d]) => { caixinha(m, t + off * BEAT, 0.17); off += d; });
-          if (n % 4 === 3) caixinha(ACORDE[c][0] + 36, t + 2.5 * BEAT, 0.035, 1.6);
-          prox += BEAT * 3; compasso++;
+        while (prox < ctx.currentTime + 0.25) {
+          const t = prox, compasso = Math.floor(passo / 16), s = passo % 16, intro = compasso < INTRO;
+          const i = intro ? compasso % 4 : (compasso - INTRO) % 4;
+          if (s === 0) acorde(ACORDES[i], t, SEMI * 16, intro ? 0.016 : 0.02);
+          if (intro) {
+            if (s % 4 === 2) chiado(t, 0.05, 0.05, 'highpass', 8000);
+            if (compasso === INTRO - 1 && s === 0) subida(t, SEMI * 16);
+          } else {
+            if (s % 4 === 0) bumbo(t);
+            if (s === 4 || s === 12) palma(t);
+            if (s % 4 === 2) { baixo(BAIXO[i], t, SEMI * 1.7); chiado(t, 0.07, 0.07, 'highpass', 7500); }
+            if (s % 2 === 1) chiado(t, 0.025, 0.025, 'highpass', 9500);
+          }
+          const nota = LEAD[i][s]; if (nota) pluck(nota, t, intro ? 0.06 : 0.08);
+          prox += SEMI; passo++;
         }
       }
       function fade(alvo, seg) {
@@ -624,22 +675,21 @@
         master.gain.exponentialRampToValueAtTime(Math.max(alvo, 0.0001), t + seg);
       }
       return {
-        iniciar() {                               // precisa ser chamado dentro de um toque
+        iniciar() {                                     // precisa ser chamado dentro de um toque
           if (ctx) { if (ligada && ctx.state !== 'running') ctx.resume(); return true; }
           try {
             if (navigator.audioSession) navigator.audioSession.type = 'playback';
             montar(); ctx.resume();
             const t = ctx.currentTime + 0.05;
-            [74, 78, 81, 86].forEach((m, i) => caixinha(m, t + i * 0.12, 0.12, 2.2));
-            prox = t + 1.3;
-            setInterval(agendar, 100); agendar();
-            fade(CONFIG.volume, 2.5);
+            [74, 78, 81, 86, 90].forEach((m, k) => pluck(m, t + k * 0.07, 0.08)); // brilho ao abrir
+            prox = t + 0.5;
+            setInterval(agendar, 50); agendar();
+            fade(CONFIG.volume, 1.5);
             ligada = true;
             return true;
           } catch (e) { return false; }
         },
         tocando: () => !!ctx && ligada && ctx.state === 'running',
-        // true = deveria estar tocando mas o celular ainda não liberou o som
         precisaDestravar: () => !ctx || (ligada && ctx.state !== 'running'),
         alternar() {
           if (!ctx) { Musica.iniciar(); return true; }
