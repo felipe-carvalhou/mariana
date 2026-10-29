@@ -356,7 +356,7 @@
       endereco: 'Av. Interlagos, 3860 — Jd. Campo Grande',
       cidade: 'São Paulo - SP', // usado na rota e no endereço
       referencia: 'Próximo à Igreja Católica do Padre Marcelo',
-      whatsapp: '5511978932913', // responsáveis — recebe quem vai e quem não vai
+      whatsapp: '5511975690310', // responsáveis — recebe quem vai e quem não vai
       confirmarAte: '',        // opcional, ex.: '2026-11-20' → "Confirme até 20/11"
       texto: 'Em uma noite de inverno, entre luzes, cristais e flocos de neve, vou celebrar meus 15 anos. Será uma honra ter você comigo nesse baile, para viver cada momento dessa noite dos sonhos.',
       observacao: 'Para que a debutante brilhe ainda mais em sua noite dos sonhos, pedimos, com carinho, que os convidados evitem o uso de azul-claro em seus looks.',
@@ -521,7 +521,9 @@
       incl.alvoY = lim((e.clientY / innerHeight - .5) * 2);
     });
     document.addEventListener('mouseleave', () => { incl.mouse = false; }); // mouse saiu: volta o reflexo automático
+    let sensorPedido = false;
     function pedirSensor() { // iPhone pede permissão — precisa ser dentro de um toque
+      if (sensorPedido) return; sensorPedido = true;
       try {
         if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function')
           DeviceOrientationEvent.requestPermission().catch(() => {});
@@ -623,7 +625,7 @@
       }
       return {
         iniciar() {                               // precisa ser chamado dentro de um toque
-          if (ctx) { ctx.resume(); return true; }
+          if (ctx) { if (ligada && ctx.state !== 'running') ctx.resume(); return true; }
           try {
             if (navigator.audioSession) navigator.audioSession.type = 'playback';
             montar(); ctx.resume();
@@ -636,11 +638,13 @@
             return true;
           } catch (e) { return false; }
         },
-        tocando: () => ligada,
+        tocando: () => !!ctx && ligada && ctx.state === 'running',
+        // true = deveria estar tocando mas o celular ainda não liberou o som
+        precisaDestravar: () => !ctx || (ligada && ctx.state !== 'running'),
         alternar() {
-          if (!ctx) return ligada;
-          if (ligada) { fade(0.0001, 0.4); setTimeout(() => ctx.suspend(), 450); ligada = false; }
-          else { ctx.resume().then(() => fade(CONFIG.volume, 1.2)); ligada = true; }
+          if (!ctx) { Musica.iniciar(); return true; }
+          if (ligada && ctx.state === 'running') { fade(0.0001, 0.4); setTimeout(() => ctx.suspend(), 450); ligada = false; }
+          else { ligada = true; ctx.resume().then(() => fade(CONFIG.volume, 1.2)); }
           return ligada;
         },
         pausarFora(oculta) { if (!ctx || !ligada) return; oculta ? ctx.suspend() : ctx.resume(); }
@@ -750,11 +754,14 @@
     }
     const fracao = () => limpos / (COLS * ROWS);
 
-    function primeiroToque() {                    // som + sensor só podem começar dentro de um toque
-      if (primeiro) return; primeiro = true;
+    // Som e sensor só podem ligar num toque ou quando o dedo sai da tela (regra dos celulares).
+    // Nunca durante o arraste — por isso isto roda só nesses momentos.
+    function destravar() {
       pedirSensor();
-      if (CONFIG.musica && Musica.iniciar()) btnMusica.hidden = false;
+      if (CONFIG.musica && Musica.precisaDestravar() && Musica.iniciar()) btnMusica.hidden = false;
     }
+    // Reforço: qualquer toque na página liga a música se ela ainda estiver presa
+    ['pointerup', 'touchend', 'click'].forEach((ev) => document.addEventListener(ev, destravar, true));
     function esconderDica() { $('dica').classList.add('some'); }
 
     function abrir() {
@@ -780,22 +787,23 @@
     gelo.addEventListener('pointermove', (e) => {
       if (!arrastando || aberto) return;
       traco(e.clientX, e.clientY);
-      if (fracao() > .42) { primeiroToque(); abrir(); }
+      if (fracao() > .42) abrir();   // a música liga quando o dedo sair (soltar)
     });
     const soltar = () => {
+      destravar();
       if (!arrastando) return;
       arrastando = false; ultimo = null;
-      primeiroToque();
+      destravar();
       if (fracao() > .3) abrir();
     };
     gelo.addEventListener('pointerup', soltar);
     gelo.addEventListener('pointercancel', soltar);
     // reforço pro iPhone: o som destrava no fim do toque
-    gelo.addEventListener('touchend', () => primeiroToque(), { passive: true });
+    gelo.addEventListener('touchend', destravar, { passive: true });
 
     // botão alternativo: limpa o vidro sozinho numa passada e abre
     $('abrirAlt').addEventListener('click', () => {
-      primeiroToque(); esconderDica(); $('abrirAlt').classList.add('some');
+      destravar(); esconderDica(); $('abrirAlt').classList.add('some');
       const t0 = performance.now(), dur = 900; ultimo = null;
       (function passa(t) {
         const p = Math.min(1, (t - t0) / dur);
