@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mariana • XV Anos • Baile de Inverno</title>
+  <meta name="description" content="Você está convidado(a) para o Baile de Inverno dos 15 anos da Mariana — 28/11/2026, Buffet Piatto." />
+  <!-- Prévia do WhatsApp: se o subdomínio for outro, troque o endereço abaixo -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mariana.convidaeu.com.br/" />
+  <meta property="og:title" content="Mariana • XV Anos" />
+  <meta property="og:description" content="Baile de Inverno • 28.11.2026 • Buffet Piatto — toque para abrir o convite 💙" />
+  <meta property="og:image" content="https://mariana.convidaeu.com.br/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#001c4d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@300;400;500;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --royal-950:#000f2e; --royal-900:#001c4d; --royal-800:#013684; --royal-700:#0d4aa6; --royal-500:#2f6fd0;
+      --ice:#e8eff9; --mist:rgba(232,239,249,.72); --hair:rgba(220,232,250,.32);
+      --tx:0; --ty:0;
+      --serif:'Bodoni Moda',Didot,'Times New Roman',serif;
+      --wide:'Syncopate','Manrope',system-ui,sans-serif;
+      --sans:'Manrope',system-ui,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{background:var(--royal-900);scroll-behavior:smooth}
+    body{font-family:var(--sans);color:#fff;min-height:100vh;overflow-x:hidden;-webkit-tap-highlight-color:transparent;
+      -webkit-font-smoothing:antialiased}
+    body.locked{overflow:hidden;height:100vh;height:100svh}
+
+    /* ================= FUNDO: noite azul royal com luz que se move ================= */
+    .bg{position:fixed;inset:0;z-index:-3;
+      background:radial-gradient(ellipse at 50% -20%, #1d5bbd 0%, transparent 60%),
+                 linear-gradient(180deg,#000f2e 0%,#001c4d 35%,#013684 75%,#0b47a3 100%)}
+    .aurora{position:fixed;inset:-20%;z-index:-2;pointer-events:none;opacity:.55;mix-blend-mode:screen}
+    .aurora i{position:absolute;width:70vmax;height:70vmax;border-radius:50%}
+    .aurora i:nth-child(1){left:-10%;top:5%;background:radial-gradient(circle,rgba(70,140,255,.55),transparent 62%);animation:flutua1 22s ease-in-out infinite alternate}
+    .aurora i:nth-child(2){right:-15%;top:35%;background:radial-gradient(circle,rgba(150,200,255,.35),transparent 60%);animation:flutua2 28s ease-in-out infinite alternate}
+    .aurora i:nth-child(3){left:20%;bottom:-10%;background:radial-gradient(circle,rgba(120,110,255,.22),transparent 60%);animation:flutua1 34s ease-in-out infinite alternate-reverse}
+    @keyframes flutua1{to{transform:translate(12vw,8vh) scale(1.15)}}
+    @keyframes flutua2{to{transform:translate(-14vw,-6vh) scale(.9)}}
+
+    /* ================= NEVE EM 3 CAMADAS (profundidade) ================= */
+    .neve{position:fixed;inset:-40px;pointer-events:none;z-index:0;overflow:hidden}
+    .neve.longe{transform:translate(calc(var(--tx)*-6px),calc(var(--ty)*-6px))}
+    .neve.meio{transform:translate(calc(var(--tx)*-14px),calc(var(--ty)*-14px))}
+    .neve.perto{z-index:6;transform:translate(calc(var(--tx)*-28px),calc(var(--ty)*-28px))}
+    .neve span{position:absolute;top:-30px;border-radius:50%;background:radial-gradient(circle,#fff 0 35%,rgba(255,255,255,0) 70%);
+      animation:cai linear infinite;will-change:transform}
+    .neve.perto span{background:radial-gradient(circle,rgba(255,255,255,.75) 0,rgba(255,255,255,.25) 45%,rgba(255,255,255,0) 70%)}
+    @keyframes cai{0%{transform:translate(0,0)}50%{transform:translate(var(--sway,20px),55vh)}100%{transform:translate(0,115vh)}}
+
+    /* ================= TIPOGRAFIA ================= */
+    .wide{font-family:var(--wide);font-weight:400;text-transform:uppercase;letter-spacing:.42em;font-size:10px;color:var(--mist)}
+    .serif{font-family:var(--serif);font-weight:400}
+    /* prata holográfica: o reflexo corre quando o celular inclina */
+    .holo{
+      background:linear-gradient(115deg,#8ea2c2 0%,#ffffff 16%,#cfe0ff 27%,#efe3ff 36%,#ffffff 46%,#bdefff 56%,#a9b8d2 68%,#ffffff 82%,#c9d6ee 100%);
+      background-size:260% 260%;
+      background-position:calc(50% + var(--tx)*45%) calc(50% + var(--ty)*45%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+    .brilho{filter:drop-shadow(0 0 22px rgba(170,205,255,.35))}
+    .fio{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--hair) 20%,rgba(255,255,255,.75) 50%,var(--hair) 80%,transparent)}
+
+    /* ================= HERO (primeira tela) ================= */
+    .hero{position:relative;z-index:2;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;padding:calc(56px + env(safe-area-inset-top)) 18px 110px}
+    .cristal{width:86px;height:86px;margin:26px auto 18px;display:block;animation:gira 60s linear infinite;
+      transform-origin:center;filter:drop-shadow(0 0 10px rgba(190,215,255,.55))}
+    @keyframes gira{to{transform:rotate(360deg)}}
+    .nome{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(4.4rem,23vw,8.4rem);line-height:.92;letter-spacing:-.01em;
+      padding:.08em .12em .14em}
+    .xv{display:flex;align-items:center;gap:14px;margin-top:14px}
+    .xv .fio{width:52px}
+    .xv b{font-family:var(--wide);font-weight:400;font-size:11px;text-transform:uppercase;letter-spacing:.62em;padding-left:.62em;color:#fff}
+    .hero-data{margin-top:34px;font-family:var(--serif);font-size:1.15rem;letter-spacing:.32em;color:var(--ice)}
+    .role{position:absolute;left:50%;bottom:calc(34px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;
+      opacity:0;transition:opacity 1s ease 1.2s}
+    .aberto .role{opacity:1}
+    .role i{display:block;width:1px;height:42px;background:linear-gradient(#fff,transparent);transform-origin:top;animation:desce 2.2s ease-in-out infinite}
+    @keyframes desce{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+    /* faixa de luz que passa pelo nome quando o gelo some */
+    .nome-wrap{position:relative;overflow:hidden}
+    .nome-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);
+      transform:translateX(-120%);mix-blend-mode:overlay;pointer-events:none}
+    .aberto .nome-wrap::after{animation:varre 1.6s ease .3s 1 forwards}
+    @keyframes varre{to{transform:translateX(120%)}}
+
+    /* ================= GELO (abertura) ================= */
+    #gelo{position:fixed;left:0;top:0;width:100vw;height:100vh;height:100lvh;z-index:30;touch-action:none;cursor:grab;
+      transition:opacity 1.5s ease, transform 1.8s cubic-bezier(.2,.7,.2,1), filter 1.5s ease}
+    #gelo.derrete{opacity:0;transform:scale(1.08);filter:blur(8px);pointer-events:none}
+    .dica{position:fixed;inset:0;z-index:31;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+      color:var(--royal-800);transition:opacity .6s ease;padding:0 24px}
+    .dica::before{content:"";position:absolute;left:50%;top:50%;width:min(130vw,560px);height:340px;transform:translate(-50%,-48%);z-index:-1;
+      background:radial-gradient(ellipse,rgba(244,248,254,.92) 0%,rgba(244,248,254,.6) 40%,rgba(244,248,254,0) 70%)}
+    .dica.some{opacity:0}
+    .dica .dedo{position:relative;width:150px;height:70px;margin-bottom:18px}
+    .dica .dedo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+    .dica .rastro{stroke-dasharray:240;stroke-dashoffset:240;animation:traco 2.6s ease-in-out infinite}
+    .dica .ponta{offset-path:path('M10 50 C 45 5, 70 70, 100 30 S 140 20, 145 45');animation:anda 2.6s ease-in-out infinite}
+    @keyframes traco{0%{stroke-dashoffset:240}55%,100%{stroke-dashoffset:0}}
+    @keyframes anda{0%{offset-distance:0%;opacity:1}55%{offset-distance:100%;opacity:1}75%,100%{offset-distance:100%;opacity:0}}
+    .dica h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:2rem;line-height:1.1;color:var(--royal-900)}
+    .dica p{margin-top:10px;font-family:var(--wide);font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:rgba(1,54,132,.75)}
+    .abrir-alt{position:fixed;left:50%;bottom:calc(30px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:32;
+      border:1px solid rgba(1,54,132,.35);background:rgba(255,255,255,.35);color:var(--royal-800);border-radius:999px;
+      padding:11px 20px;font:500 12px var(--sans);letter-spacing:.06em;cursor:pointer;white-space:nowrap;
+      -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .5s}
+    .abrir-alt.some{opacity:0;pointer-events:none}
+
+    /* ================= BOTÃO DA MÚSICA ================= */
+    .music-btn{position:fixed;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:20;
+      width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px;
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);
+      -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:opacity .4s, transform .2s}
+    .music-btn[hidden]{display:none}
+    .music-btn:active{transform:scale(.92)}
+    .music-btn i{display:block;width:2px;height:15px;border-radius:2px;background:#fff;transform-origin:bottom;animation:eq 1.1s ease-in-out infinite}
+    .music-btn i:nth-child(2){animation-delay:-.35s}.music-btn i:nth-child(3){animation-delay:-.7s}.music-btn i:nth-child(4){animation-delay:-.2s}
+    @keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+    .music-btn.off{opacity:.65}
+    .music-btn.off i{animation:none;transform:scaleY(.25)}
+    .music-btn.off::after{content:"";position:absolute;width:28px;height:1.5px;background:#fff;transform:rotate(-45deg)}
+
+    /* ================= SEÇÕES ================= */
+    main{position:relative;z-index:2}
+    .sec{max-width:520px;margin:0 auto;padding:84px 26px;text-align:center;position:relative}
+    .sec + .sec::before{content:"";position:absolute;left:50%;top:0;width:1px;height:46px;transform:translateX(-50%);
+      background:linear-gradient(transparent,rgba(255,255,255,.5))}
+    .sec .wide{display:block;margin-bottom:26px}
+
+    .intro p{font-family:var(--serif);font-style:italic;font-size:1.42rem;line-height:1.6;color:var(--ice)}
+
+    .foto{max-width:300px;margin:0 auto;padding:10px;border:1px solid var(--hair);border-radius:200px 200px 18px 18px}
+    .foto img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:190px 190px 12px 12px}
+
+    .data-grande{font-family:var(--serif);font-weight:400;font-size:clamp(6rem,34vw,10.5rem);line-height:.86;letter-spacing:-.03em}
+    .data-grande .pt{font-size:.5em;vertical-align:.32em;margin:0 .02em}
+    .data-sub{margin-top:18px}
+    .hora{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-top:38px}
+    .hora strong{font-family:var(--serif);font-weight:400;font-size:2.8rem;line-height:1}
+    .hora span{font-size:12.5px;color:var(--mist);text-align:left;line-height:1.4}
+    .contagem{display:grid;grid-template-columns:repeat(4,1fr);margin-top:46px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+    .contagem div{padding:18px 0 16px;overflow:hidden}
+    .contagem div + div{border-left:1px solid var(--hair)}
+    .contagem b{display:block;font-family:var(--serif);font-weight:400;font-size:2.15rem;line-height:1;font-variant-numeric:lining-nums tabular-nums}
+    .contagem b.rola{animation:rola .55s cubic-bezier(.2,.8,.2,1)}
+    @keyframes rola{from{transform:translateY(-55%);opacity:0;filter:blur(3px)}to{transform:none;opacity:1;filter:none}}
+    .contagem small{display:block;margin-top:9px;font-family:var(--wide);font-size:7.5px;letter-spacing:.3em;color:var(--mist)}
+    .chegou{grid-column:span 4;padding:22px 0;font-family:var(--serif);font-style:italic;font-size:1.8rem}
+
+    /* pedido especial — moldura com cantos de cristal */
+    .pedido{position:relative;padding:40px 26px 34px}
+    .pedido::before,.pedido::after,.pedido .c3,.pedido .c4{content:"";position:absolute;width:26px;height:26px;border-color:rgba(255,255,255,.7);border-style:solid}
+    .pedido::before{left:0;top:0;border-width:1px 0 0 1px}
+    .pedido::after{right:0;bottom:0;border-width:0 1px 1px 0}
+    .pedido .c3{right:0;top:0;border-width:1px 1px 0 0}
+    .pedido .c4{left:0;bottom:0;border-width:0 0 1px 1px}
+    .pedido h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:2.1rem;line-height:1.1}
+    .pedido p{margin-top:16px;font-size:15px;line-height:1.75;color:var(--ice);font-weight:300}
+    .pedido p + p{margin-top:10px;font-family:var(--serif);font-style:italic;font-size:1.12rem}
+
+    .local h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.8rem,13vw,3.8rem);line-height:1}
+    .local .end{margin-top:18px;font-size:15px;line-height:1.65;color:var(--ice);font-weight:300}
+    .local .ref{margin-top:6px;font-size:12.5px;color:var(--mist)}
+    .links{display:flex;justify-content:center;gap:10px;margin-top:26px;flex-wrap:wrap}
+    .link{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.4);
+      color:#fff;text-decoration:none;font-size:12.5px;font-weight:500;letter-spacing:.04em;transition:background .2s}
+    .link:hover{background:rgba(255,255,255,.1)}
+    .link svg{width:12px;height:12px}
+
+    .rsvp h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(3rem,15vw,4.2rem);line-height:1}
+    .rsvp .sub{margin-top:14px;font-size:13.5px;color:var(--mist);line-height:1.6}
+    .guest{display:block;width:100%;max-width:330px;margin:30px auto 0;padding:12px 4px;border:0;border-bottom:1px solid rgba(255,255,255,.5);
+      background:transparent;color:#fff;text-align:center;font:400 16px var(--sans);outline:none;border-radius:0;transition:border-color .2s}
+    .guest::placeholder{color:rgba(255,255,255,.55);font-size:14px}
+    .guest:focus{border-bottom-color:#fff}
+    .guest.erro{border-bottom-color:#ffd0d0;animation:treme .35s ease}
+    @keyframes treme{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .acoes{display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:28px}
+    .btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:9px;width:100%;max-width:330px;
+      padding:16px 22px;border-radius:999px;text-decoration:none;cursor:pointer;font:600 12px var(--sans);letter-spacing:.2em;text-transform:uppercase;
+      transition:transform .2s ease}
+    .btn:active{transform:scale(.97)}
+    .btn svg{width:17px;height:17px;flex:none}
+    .btn-prata{color:var(--royal-900);background:linear-gradient(135deg,#ffffff 0%,#dfe6f1 40%,#b9c5d9 70%,#f3f6fb 100%);
+      box-shadow:0 14px 34px rgba(0,10,40,.45), inset 0 1px 0 #fff}
+    .btn-prata::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
+      background:linear-gradient(105deg,transparent,rgba(255,255,255,.9),transparent);animation:reflexo 3.8s ease-in-out infinite}
+    @keyframes reflexo{0%,55%{left:-60%}85%,100%{left:120%}}
+    .btn-linha{color:#fff;border:1px solid rgba(255,255,255,.45);background:transparent}
+    .agenda{display:inline-flex;align-items:center;gap:8px;margin-top:22px;color:var(--ice);font-size:13px;text-decoration:none;
+      border-bottom:1px solid var(--hair);padding-bottom:3px}
+    .agenda svg{width:15px;height:15px}
+
+    .fim{padding:40px 24px calc(40px + env(safe-area-inset-bottom));text-align:center}
+    .fim .assin{font-family:var(--serif);font-style:italic;font-size:1.5rem}
+    .fim .wide{display:block;margin-top:10px;font-size:8.5px}
+    .fim .marca{margin-top:46px;font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.05em}
+    .fim .marca a{color:rgba(255,255,255,.85);font-weight:600;text-decoration:none}
+
+    /* entrada suave ao rolar */
+    .rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1), filter 1s ease}
+    .rv.in{opacity:1;transform:none;filter:none}
+    .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+    /* hero aparece por trás do gelo */
+    .hero .rv{opacity:1;transform:none;filter:none}
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none !important;transition-duration:.01ms !important}
+      .rv{opacity:1;transform:none;filter:none}
+    }
+  </style>
+</head>
+<body class="locked">
+  <div class="bg"></div>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="neve longe" id="neve1" aria-hidden="true"></div>
+  <div class="neve meio" id="neve2" aria-hidden="true"></div>
+
+  <!-- ===== GELO: o convidado passa o dedo para revelar ===== -->
+  <canvas id="gelo" aria-hidden="true"></canvas>
+  <div class="dica" id="dica" aria-hidden="true">
+    <div class="dedo">
+      <svg viewBox="0 0 150 70">
+        <path class="rastro" d="M10 50 C 45 5, 70 70, 100 30 S 140 20, 145 45" fill="none" stroke="rgba(1,54,132,.35)" stroke-width="10" stroke-linecap="round"/>
+        <circle class="ponta" r="9" fill="rgba(1,54,132,.55)" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div>
+    <h2>Passe o dedo no vidro</h2>
+    <p>para revelar o convite</p>
+  </div>
+  <button class="abrir-alt" id="abrirAlt" type="button">ou toque aqui para abrir 🎵</button>
+
+  <button class="music-btn" id="btnMusica" type="button" aria-label="Pausar música" hidden><i></i><i></i><i></i><i></i></button>
+
+  <main id="convite">
+    <!-- ===== HERO ===== -->
+    <header class="hero" id="hero">
+      <p class="wide">Baile de Inverno</p>
+
+      <svg class="cristal" viewBox="-50 -50 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="gCristal" gradientUnits="userSpaceOnUse" x1="-50" y1="-50" x2="50" y2="50">
+            <stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#cfe0ff"/><stop offset=".6" stop-color="#ffffff"/><stop offset="1" stop-color="#a9bde0"/>
+          </linearGradient>
+          <g id="braco" stroke="url(#gCristal)" stroke-width="1.1" stroke-linecap="round" fill="none">
+            <path d="M0 0V-44"/>
+            <path d="M0-14l-7-7M0-14l7-7M0-26l-9-9M0-26l9-9M0-36l-5-5M0-36l5-5"/>
+            <path d="M0-44l-2.5 3h5z" fill="#fff" stroke="none"/>
+          </g>
+        </defs>
+        <use href="#braco"/><use href="#braco" transform="rotate(60)"/><use href="#braco" transform="rotate(120)"/>
+        <use href="#braco" transform="rotate(180)"/><use href="#braco" transform="rotate(240)"/><use href="#braco" transform="rotate(300)"/>
+        <polygon points="0,-8 7,-4 7,4 0,8 -7,4 -7,-4" fill="none" stroke="url(#gCristal)" stroke-width="1"/>
+        <circle r="1.8" fill="#fff"/>
+      </svg>
+
+      <div class="nome-wrap"><h1 class="nome holo brilho" id="f-nome">Mariana</h1></div>
+      <div class="xv"><span class="fio"></span><b>XV Anos</b><span class="fio"></span></div>
+      <p class="hero-data" id="f-hero-data">28 · 11 · 2026</p>
+
+      <div class="role" aria-hidden="true"><span class="wide" style="font-size:8px">role</span><i></i></div>
+    </header>
+
+    <!-- ===== CONVITE ===== -->
+    <section class="sec intro">
+      <span class="wide rv">O convite</span>
+      <p class="rv d1" id="f-texto"></p>
+    </section>
+
+    <!-- Foto: salve a foto da aniversariante como "mariana.jpeg" na mesma pasta. Sem foto, este bloco some sozinho. -->
+    <section class="sec" id="sec-foto">
+      <figure class="foto rv"><img src="mariana.jpeg" alt="Foto da Mariana" loading="lazy" onerror="document.getElementById('sec-foto').remove()"></figure>
+    </section>
+
+    <section class="sec">
+      <span class="wide rv">Salve a data</span>
+      <div class="data-grande holo rv d1" id="f-data-grande">28<span class="pt">.</span>11</div>
+      <p class="wide data-sub rv d2" id="f-semana"></p>
+      <div class="hora rv d2" id="bloco-hora"><strong class="holo" id="f-hora"></strong><span>chegada dos<br>convidados</span></div>
+      <div class="contagem rv d3" id="contagem">
+        <div><b id="cd-d">--</b><small>Dias</small></div>
+        <div><b id="cd-h">--</b><small>Horas</small></div>
+        <div><b id="cd-m">--</b><small>Min</small></div>
+        <div><b id="cd-s">--</b><small>Seg</small></div>
+      </div>
+    </section>
+
+    <section class="sec" id="sec-pedido">
+      <div class="pedido rv"><i class="c3"></i><i class="c4"></i>
+        <span class="wide" style="margin-bottom:16px">Com carinho</span>
+        <h3 class="holo">Um pedido especial</h3>
+        <p id="f-obs"></p>
+        <p id="f-obs2"></p>
+      </div>
+    </section>
+
+    <section class="sec local">
+      <span class="wide rv">O local</span>
+      <h3 class="holo rv d1" id="f-local"></h3>
+      <p class="end rv d2" id="f-endereco"></p>
+      <p class="ref rv d2" id="f-ref"></p>
+      <div class="links rv d3" id="f-links">
+        <a class="link" id="f-maps" href="#" target="_blank" rel="noopener">Google Maps
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9L9 3M4 3h5v5"/></svg></a>
+        <a class="link" id="f-waze" href="#" target="_blank" rel="noopener">Waze
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9L9 3M4 3h5v5"/></svg></a>
+      </div>
+    </section>
+
+    <section class="sec rsvp">
+      <span class="wide rv">Confirmação</span>
+      <h3 class="holo rv d1">Você vem?</h3>
+      <p class="sub rv d2" id="f-prazo"></p>
+      <input class="guest rv d2" id="guest" type="text" autocomplete="name" placeholder="Seu nome (e de quem vem com você)" aria-label="Seu nome">
+      <div class="acoes rv d3">
+        <a class="btn btn-prata" id="btnSim" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-3.9A8.5 8.5 0 1 1 8.2 19.5z"/><path d="M9.2 8.2c.2-.4.5-.5.8-.5h.5l1 2.2-.8.9c.6 1.2 1.5 2.1 2.6 2.7l.9-.8 2.2 1v.5c0 .4-.2.7-.6.9-.6.3-1.4.4-2.2.1-2.3-.9-4-2.7-4.8-5-.2-.7-.1-1.4.4-2z" fill="currentColor" stroke="none"/></svg>
+          Vou comparecer
+        </a>
+        <a class="btn btn-linha" id="btnNao" href="#" target="_blank" rel="noopener">Não poderei ir</a>
+      </div>
+      <a class="agenda rv d3" id="btnAgenda" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <span id="agendaTxt">Salvar na agenda</span>
+      </a>
+    </section>
+
+    <footer class="fim">
+      <span class="fio rv" style="max-width:120px;margin:0 auto 34px"></span>
+      <p class="assin holo rv" id="f-assin">Mariana</p>
+      <span class="wide rv" id="f-assin2"></span>
+      <p class="marca">Convite criado por <a href="https://convidaeu.com.br" target="_blank" rel="noopener">Convida&amp;u</a></p>
+    </footer>
+  </main>
+
+  <div class="neve perto" id="neve3" aria-hidden="true"></div>
+
+  <script>
+    /* =========================================================
+       DADOS DO CONVITE — edite só aqui
+       Campo vazio ('') = o bloco correspondente some do convite.
+       ========================================================= */
+    const CONFIG = {
+      nome: 'Mariana',
+      data: '2026-11-28',      // AAAA-MM-DD
+      horario: '21:00',        // chegada dos convidados
+      local: 'Buffet Piatto',
+      endereco: 'Av. Interlagos, 3860 — Jd. Campo Grande',
+      cidade: 'São Paulo - SP', // usado na rota e no endereço
+      referencia: 'Próximo à Igreja Católica do Padre Marcelo',
+      whatsapp: '5511978932913', // responsáveis — recebe quem vai e quem não vai
+      confirmarAte: '',        // opcional, ex.: '2026-11-20' → "Confirme até 20/11"
+      texto: 'Em uma noite de inverno, entre luzes, cristais e flocos de neve, vou celebrar meus 15 anos. Será uma honra ter você comigo nesse baile, para viver cada momento dessa noite dos sonhos.',
+      observacao: 'Para que a debutante brilhe ainda mais em sua noite dos sonhos, pedimos, com carinho, que os convidados evitem o uso de azul-claro em seus looks.',
+      observacao2: 'Contamos com a compreensão e o carinho de todos! 💙',
+      musica: true,            // false = convite sem música
+      volume: 0.55,            // 0 a 1
+      duracaoHoras: 5          // usado só no "Salvar na agenda"
+    };
+    /* ========================================================= */
+
+    const $ = (id) => document.getElementById(id);
+    const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const [ano, mes, dia] = CONFIG.data.split('-');
+    const semana = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+    const inicio = new Date(`${CONFIG.data}T${CONFIG.horario || '00:00'}:00-03:00`); // horário de Brasília
+
+    /* ---------- Textos ---------- */
+    $('f-nome').textContent = CONFIG.nome;
+    $('f-assin').textContent = CONFIG.nome;
+    $('f-hero-data').textContent = `${dia} · ${mes} · ${ano}`;
+    $('f-data-grande').innerHTML = `${dia}<span class="pt">.</span>${mes}`;
+    $('f-semana').textContent = `${semana[new Date(`${CONFIG.data}T12:00:00-03:00`).getUTCDay()]} · ${ano}`;
+    $('f-assin2').textContent = `XV Anos · ${dia}.${mes}.${ano}`;
+    if (CONFIG.texto) $('f-texto').textContent = CONFIG.texto; else $('f-texto').closest('section').remove();
+    if (!CONFIG.musica) $('abrirAlt').textContent = 'ou toque aqui para abrir';
+
+    if (CONFIG.horario) {
+      const [h, m] = CONFIG.horario.split(':');
+      $('f-hora').textContent = `${Number(h)}h${m && m !== '00' ? m : ''}`;
+    } else $('bloco-hora').remove();
+
+    if (CONFIG.observacao) {
+      $('f-obs').textContent = CONFIG.observacao;
+      if (CONFIG.observacao2) $('f-obs2').textContent = CONFIG.observacao2; else $('f-obs2').remove();
+    } else $('sec-pedido').remove();
+
+    $('f-local').textContent = CONFIG.local;
+    if (CONFIG.endereco) {
+      $('f-endereco').textContent = [CONFIG.endereco, CONFIG.cidade].filter(Boolean).join(', ');
+      const destino = [CONFIG.endereco.replace(' — ', ', '), CONFIG.cidade].filter(Boolean).join(', ');
+      $('f-maps').href = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=' + encodeURIComponent(destino);
+      $('f-waze').href = 'https://waze.com/ul?navigate=yes&q=' + encodeURIComponent(destino);
+    } else { $('f-endereco').remove(); $('f-links').remove(); }
+    if (CONFIG.referencia) $('f-ref').textContent = CONFIG.referencia; else $('f-ref').remove();
+
+    /* ---------- Confirmação pelo WhatsApp (vai e não vai) ---------- */
+    if (CONFIG.confirmarAte) {
+      const [, pm, pd] = CONFIG.confirmarAte.split('-');
+      $('f-prazo').textContent = `Por favor, confirme até ${pd}/${pm}. Escreva seu nome e escolha uma opção.`;
+    } else {
+      $('f-prazo').textContent = 'Escreva seu nome e escolha uma opção 💙';
+    }
+    const guest = $('guest');
+    function linkWhats(vai) {
+      const quem = guest.value.trim();
+      const msg = vai
+        ? `Olá! ${quem ? `Aqui é ${quem}. ` : ''}Confirmo minha presença no Baile de Inverno dos 15 anos da ${CONFIG.nome} 💙`
+        : `Olá! ${quem ? `Aqui é ${quem}. ` : ''}Infelizmente não poderei comparecer aos 15 anos da ${CONFIG.nome}. Desejo uma noite linda! 💙`;
+      // api.whatsapp.com em vez de wa.me: não estraga o emoji no caminho
+      return `https://api.whatsapp.com/send?phone=${CONFIG.whatsapp}&text=${encodeURIComponent(msg)}`;
+    }
+    ['btnSim', 'btnNao'].forEach((id) => {
+      const btn = $(id), vai = id === 'btnSim';
+      const atualizar = () => { btn.href = linkWhats(vai); };
+      atualizar();
+      guest.addEventListener('input', atualizar);
+      btn.addEventListener('click', (e) => {
+        if (!guest.value.trim()) {
+          e.preventDefault();
+          guest.classList.remove('erro'); void guest.offsetWidth; guest.classList.add('erro');
+          guest.placeholder = 'Escreva seu nome primeiro 😊';
+          guest.focus();
+        } else if (navigator.vibrate) navigator.vibrate(15);
+      });
+    });
+
+    /* ---------- Salvar na agenda (iPhone → .ics | Android/PC → Google Agenda) ---------- */
+    (function(){
+      const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const local = [CONFIG.local, CONFIG.endereco.replace(' — ', ', '), CONFIG.cidade].filter(Boolean).join(', ');
+      const titulo = `15 anos da ${CONFIG.nome}`;
+      const hora = CONFIG.horario ? ` • Chegada dos convidados às ${Number(CONFIG.horario.split(':')[0])}h` : '';
+      const detalhes = `Baile de Inverno${hora}\n${CONFIG.referencia}\nPedido: evite looks em azul-claro 💙`;
+      let datas, icsInicio, icsFim, alarme;
+      if (CONFIG.horario) {
+        const fim = new Date(inicio.getTime() + CONFIG.duracaoHoras * 3600000);
+        datas = `${fmt(inicio)}/${fmt(fim)}`; icsInicio = `DTSTART:${fmt(inicio)}`; icsFim = `DTEND:${fmt(fim)}`; alarme = '-P1D';
+      } else {
+        const prox = new Date(`${CONFIG.data}T12:00:00Z`); prox.setUTCDate(prox.getUTCDate() + 1);
+        const d2 = prox.toISOString().slice(0,10).replace(/-/g,'');
+        datas = `${ano}${mes}${dia}/${d2}`; icsInicio = `DTSTART;VALUE=DATE:${ano}${mes}${dia}`; icsFim = `DTEND;VALUE=DATE:${d2}`; alarme = '-PT15H';
+      }
+      const params = new URLSearchParams({ action: 'TEMPLATE', text: `${titulo} 💙`, dates: datas, location: local, details: detalhes });
+      const linkGoogle = 'https://calendar.google.com/calendar/render?' + params.toString();
+      const esc = (t) => t.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+      const ics = [
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Convida&u//Convite//PT','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
+        `UID:${CONFIG.data}-${CONFIG.nome.toLowerCase().replace(/[^a-z0-9]+/g, '-')}@convidaeu.com.br`, `DTSTAMP:${fmt(new Date())}`,
+        icsInicio, icsFim, `SUMMARY:${esc(titulo)}`, `LOCATION:${esc(local)}`, `DESCRIPTION:${esc(detalhes)}`,
+        'BEGIN:VALARM','ACTION:DISPLAY',`DESCRIPTION:${esc('Amanhã é o baile da ' + CONFIG.nome + '!')}`,`TRIGGER:${alarme}`,'END:VALARM',
+        'END:VEVENT','END:VCALENDAR'
+      ].join('\r\n');
+      const ehIPhone = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const btn = $('btnAgenda');
+      if (ehIPhone) {
+        $('agendaTxt').textContent = 'Salvar no calendário';
+        btn.removeAttribute('target');
+        btn.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+        btn.addEventListener('click', (e) => { e.preventDefault(); window.location.href = btn.href; });
+      } else btn.href = linkGoogle;
+    })();
+
+    /* ---------- Contagem regressiva (números rolam ao mudar) ---------- */
+    const pad = (n) => String(n).padStart(2, '0');
+    function poe(id, v) {
+      const el = $(id); if (el.textContent === v) return;
+      el.textContent = v; el.classList.remove('rola'); void el.offsetWidth; el.classList.add('rola');
+    }
+    function tick(){
+      const diff = inicio - new Date();
+      if (diff <= 0) { $('contagem').innerHTML = '<p class="chegou">O baile chegou 💙</p>'; clearInterval(timer); return; }
+      poe('cd-d', pad(Math.floor(diff / 864e5)));
+      poe('cd-h', pad(Math.floor(diff % 864e5 / 36e5)));
+      poe('cd-m', pad(Math.floor(diff % 36e5 / 6e4)));
+      poe('cd-s', pad(Math.floor(diff % 6e4 / 1e3)));
+    }
+    const timer = setInterval(tick, 1000); tick();
+
+    /* ---------- Neve em 3 camadas ---------- */
+    function nevar(box, n, min, max, vel) {
+      if (reduzir) return;
+      for (let i = 0; i < n; i++) {
+        const f = document.createElement('span'), s = min + Math.random() * (max - min);
+        f.style.width = f.style.height = s + 'px';
+        f.style.left = Math.random() * 100 + '%';
+        f.style.opacity = .35 + Math.random() * .6;
+        f.style.animationDuration = (vel + Math.random() * vel * .6) + 's';
+        f.style.animationDelay = (-Math.random() * vel * 1.6) + 's';
+        f.style.setProperty('--sway', (Math.random() * 60 - 30) + 'px');
+        box.appendChild(f);
+      }
+    }
+    const fraco = innerWidth < 640;
+    nevar($('neve1'), fraco ? 30 : 50, 1.5, 3, 26);
+    nevar($('neve2'), fraco ? 18 : 30, 3, 6, 16);
+    nevar($('neve3'), fraco ? 5 : 8, 12, 22, 9);
+
+    /* ---------- Reflexo holográfico: segue a inclinação do celular ---------- */
+    const incl = { x: 0, y: 0, alvoX: 0, alvoY: 0, sensor: false, mouse: false, base: null };
+    const lim = (v) => Math.max(-1, Math.min(1, v));
+    addEventListener('deviceorientation', (e) => {
+      if (e.gamma == null) return;
+      incl.sensor = true;
+      if (incl.base == null) incl.base = e.beta;
+      incl.alvoX = lim(e.gamma / 30);
+      incl.alvoY = lim((e.beta - incl.base) / 30);
+    });
+    addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      incl.mouse = true;
+      incl.alvoX = lim((e.clientX / innerWidth - .5) * 2);
+      incl.alvoY = lim((e.clientY / innerHeight - .5) * 2);
+    });
+    document.addEventListener('mouseleave', () => { incl.mouse = false; }); // mouse saiu: volta o reflexo automático
+    function pedirSensor() { // iPhone pede permissão — precisa ser dentro de um toque
+      try {
+        if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function')
+          DeviceOrientationEvent.requestPermission().catch(() => {});
+      } catch (e) {}
+    }
+    const raiz = document.documentElement.style;
+    (function anima(t){
+      if (!incl.sensor && !incl.mouse) { incl.alvoX = Math.sin(t / 2600) * .75; incl.alvoY = Math.cos(t / 3400) * .5; }
+      incl.x += (incl.alvoX - incl.x) * .08; incl.y += (incl.alvoY - incl.y) * .08;
+      raiz.setProperty('--tx', incl.x.toFixed(3)); raiz.setProperty('--ty', incl.y.toFixed(3));
+      if (!reduzir) requestAnimationFrame(anima);
+    })(0);
+
+    /* =========================================================
+       MÚSICA — valsa de caixinha de música, composta e tocada
+       pelo próprio navegador (não usa arquivo de áudio).
+       ========================================================= */
+    const Musica = (() => {
+      let ctx, master, bus, lp, ligada = false, prox = 0, compasso = 0;
+      const BEAT = 60 / 84;
+      const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+      const ACORDE = { D:[62,66,69], Bm:[59,62,66], G:[55,59,62], A:[57,61,64], Fm:[54,57,61] };
+      const BAIXO  = { D:50, Bm:47, G:43, A:45, Fm:42 };
+      const SEQ = ['D','Bm','G','A', 'D','Fm','G','A', 'Bm','G','D','A', 'G','A','D','D'];
+      const MELODIA = [
+        [[78,2],[81,1]], [[83,2],[81,1]], [[79,1],[78,1],[76,1]], [[76,2],[73,1]],
+        [[74,2],[78,1]], [[81,2],[85,1]], [[83,1],[81,1],[79,1]], [[81,3]],
+        [[86,2],[83,1]], [[83,2],[79,1]], [[81,2],[78,1]], [[76,2],[81,1]],
+        [[79,1],[83,1],[86,1]], [[85,1.5],[83,.5],[81,1]], [[78,1],[81,1],[86,1]], [[86,3]]
+      ];
+      function eco(seg) {
+        const len = Math.floor(ctx.sampleRate * seg), buf = ctx.createBuffer(2, len, ctx.sampleRate);
+        for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3); }
+        return buf;
+      }
+      function montar() {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        ctx = new AC();
+        const comp = ctx.createDynamicsCompressor();
+        master = ctx.createGain(); master.gain.value = 0.0001;
+        bus = ctx.createGain();
+        const seco = ctx.createGain(); seco.gain.value = 0.8;
+        const molhado = ctx.createGain(); molhado.gain.value = 0.5;
+        const rev = ctx.createConvolver(); rev.buffer = eco(2.8);
+        bus.connect(seco); bus.connect(rev); rev.connect(molhado);
+        seco.connect(master); molhado.connect(master);
+        master.connect(comp); comp.connect(ctx.destination);
+        lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; lp.connect(bus);
+      }
+      function caixinha(m, t, vol, dur = 2.4) {
+        const f = hz(m);
+        [[1, 1, dur], [2, .26, dur * .5], [3.98, .07, dur * .22]].forEach(([mul, g, d]) => {
+          const o = ctx.createOscillator(), a = ctx.createGain();
+          o.type = 'sine'; o.frequency.value = f * mul;
+          a.gain.setValueAtTime(0.0001, t);
+          a.gain.exponentialRampToValueAtTime(vol * g, t + 0.006);
+          a.gain.exponentialRampToValueAtTime(0.0001, t + d);
+          o.connect(a); a.connect(bus); o.start(t); o.stop(t + d + 0.05);
+        });
+      }
+      function fundo(notas, t, dur) {
+        notas.forEach((m) => [-5, 5].forEach((det) => {
+          const o = ctx.createOscillator(), a = ctx.createGain();
+          o.type = 'triangle'; o.frequency.value = hz(m); o.detune.value = det;
+          a.gain.setValueAtTime(0.0001, t);
+          a.gain.linearRampToValueAtTime(0.022, t + 0.7);
+          a.gain.setValueAtTime(0.022, t + dur - 0.2);
+          a.gain.linearRampToValueAtTime(0.0001, t + dur + 0.7);
+          o.connect(a); a.connect(lp); o.start(t); o.stop(t + dur + 0.8);
+        }));
+      }
+      function baixo(m, t) {
+        [[1, .16], [2, .07]].forEach(([mul, g]) => {
+          const o = ctx.createOscillator(), a = ctx.createGain();
+          o.type = 'sine'; o.frequency.value = hz(m) * mul;
+          a.gain.setValueAtTime(0.0001, t);
+          a.gain.exponentialRampToValueAtTime(g, t + 0.02);
+          a.gain.exponentialRampToValueAtTime(0.0001, t + 1.8);
+          o.connect(a); a.connect(bus); o.start(t); o.stop(t + 1.9);
+        });
+      }
+      function agendar() {
+        while (prox < ctx.currentTime + 0.6) {
+          const n = compasso % SEQ.length, c = SEQ[n], t = prox;
+          fundo(ACORDE[c], t, BEAT * 3);
+          baixo(BAIXO[c], t);
+          [1, 2].forEach((b) => ACORDE[c].slice(1).forEach((m) => caixinha(m, t + b * BEAT, 0.045, 1.1)));
+          let off = 0;
+          MELODIA[n].forEach(([m, d]) => { caixinha(m, t + off * BEAT, 0.17); off += d; });
+          if (n % 4 === 3) caixinha(ACORDE[c][0] + 36, t + 2.5 * BEAT, 0.035, 1.6);
+          prox += BEAT * 3; compasso++;
+        }
+      }
+      function fade(alvo, seg) {
+        const t = ctx.currentTime;
+        master.gain.cancelScheduledValues(t);
+        master.gain.setValueAtTime(Math.max(master.gain.value, 0.0001), t);
+        master.gain.exponentialRampToValueAtTime(Math.max(alvo, 0.0001), t + seg);
+      }
+      return {
+        iniciar() {                               // precisa ser chamado dentro de um toque
+          if (ctx) { ctx.resume(); return true; }
+          try {
+            if (navigator.audioSession) navigator.audioSession.type = 'playback';
+            montar(); ctx.resume();
+            const t = ctx.currentTime + 0.05;
+            [74, 78, 81, 86].forEach((m, i) => caixinha(m, t + i * 0.12, 0.12, 2.2));
+            prox = t + 1.3;
+            setInterval(agendar, 100); agendar();
+            fade(CONFIG.volume, 2.5);
+            ligada = true;
+            return true;
+          } catch (e) { return false; }
+        },
+        tocando: () => ligada,
+        alternar() {
+          if (!ctx) return ligada;
+          if (ligada) { fade(0.0001, 0.4); setTimeout(() => ctx.suspend(), 450); ligada = false; }
+          else { ctx.resume().then(() => fade(CONFIG.volume, 1.2)); ligada = true; }
+          return ligada;
+        },
+        pausarFora(oculta) { if (!ctx || !ligada) return; oculta ? ctx.suspend() : ctx.resume(); }
+      };
+    })();
+    const btnMusica = $('btnMusica');
+    btnMusica.addEventListener('click', () => {
+      const t = Musica.alternar();
+      btnMusica.classList.toggle('off', !t);
+      btnMusica.setAttribute('aria-label', t ? 'Pausar música' : 'Tocar música');
+    });
+    document.addEventListener('visibilitychange', () => Musica.pausarFora(document.hidden));
+
+    /* =========================================================
+       GELO — vidro congelado que o convidado limpa com o dedo
+       ========================================================= */
+    const gelo = $('gelo'), g = gelo.getContext('2d');
+    let W = 0, H = 0, COLS = 14, ROWS = 28, grade, limpos = 0, aberto = false, arrastando = false, ultimo = null, primeiro = false;
+
+    function pintarGelo() {
+      const r = gelo.getBoundingClientRect();
+      W = r.width; H = r.height;
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      gelo.width = Math.round(W * dpr); gelo.height = Math.round(H * dpr);
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      grade = new Uint8Array(COLS * ROWS); limpos = 0;
+
+      // camada base de geada
+      const base = g.createLinearGradient(0, 0, W, H);
+      base.addColorStop(0, 'rgba(236,243,252,.93)');
+      base.addColorStop(.5, 'rgba(214,228,246,.88)');
+      base.addColorStop(1, 'rgba(228,238,251,.94)');
+      g.fillStyle = base; g.fillRect(0, 0, W, H);
+
+      // gelo mais grosso nas bordas
+      const borda = g.createRadialGradient(W/2, H/2, Math.min(W,H) * .25, W/2, H/2, Math.max(W,H) * .75);
+      borda.addColorStop(0, 'rgba(255,255,255,0)');
+      borda.addColorStop(1, 'rgba(255,255,255,.55)');
+      g.fillStyle = borda; g.fillRect(0, 0, W, H);
+
+      // textura granulada
+      const n = document.createElement('canvas'); n.width = n.height = 160;
+      const nc = n.getContext('2d'), img = nc.createImageData(160, 160);
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = 200 + Math.random() * 55;
+        img.data[i] = v; img.data[i+1] = v + 3; img.data[i+2] = 255; img.data[i+3] = Math.random() * 70;
+      }
+      nc.putImageData(img, 0, 0);
+      g.fillStyle = g.createPattern(n, 'repeat'); g.fillRect(0, 0, W, H);
+
+      // cristais de gelo (galhos)
+      function galho(x, y, ang, len, nivel) {
+        const x2 = x + Math.cos(ang) * len, y2 = y + Math.sin(ang) * len;
+        g.beginPath(); g.moveTo(x, y); g.lineTo(x2, y2); g.stroke();
+        if (nivel <= 0 || len < 6) return;
+        const passos = 3 + (Math.random() * 3 | 0);
+        for (let i = 1; i <= passos; i++) {
+          const f = i / (passos + 1), px = x + (x2 - x) * f, py = y + (y2 - y) * f, l = len * (.45 - f * .25);
+          galho(px, py, ang - 1.05 + (Math.random() - .5) * .2, l, nivel - 1);
+          galho(px, py, ang + 1.05 + (Math.random() - .5) * .2, l, nivel - 1);
+        }
+      }
+      g.lineCap = 'round';
+      const qtd = Math.round(W * H / 9000);
+      for (let i = 0; i < qtd; i++) {
+        const lado = Math.random();
+        let x, y;                                 // mais cristais perto das bordas
+        if (lado < .25) { x = Math.random() * W * .3; y = Math.random() * H; }
+        else if (lado < .5) { x = W - Math.random() * W * .3; y = Math.random() * H; }
+        else if (lado < .7) { x = Math.random() * W; y = Math.random() * H * .2; }
+        else if (lado < .9) { x = Math.random() * W; y = H - Math.random() * H * .2; }
+        else { x = Math.random() * W; y = Math.random() * H; }
+        g.strokeStyle = `rgba(255,255,255,${.35 + Math.random() * .4})`;
+        g.lineWidth = .5 + Math.random() * .7;
+        galho(x, y, Math.random() * Math.PI * 2, 18 + Math.random() * 46, 2);
+      }
+      // brilhinhos
+      for (let i = 0; i < qtd * 2; i++) {
+        g.fillStyle = `rgba(255,255,255,${.5 + Math.random() * .5})`;
+        g.beginPath(); g.arc(Math.random() * W, Math.random() * H, Math.random() * 1.3, 0, 7); g.fill();
+      }
+    }
+
+    function marcar(x, y, r) {
+      const cw = W / COLS, ch = H / ROWS;
+      const c0 = Math.max(0, Math.floor((x - r) / cw)), c1 = Math.min(COLS - 1, Math.floor((x + r) / cw));
+      const r0 = Math.max(0, Math.floor((y - r) / ch)), r1 = Math.min(ROWS - 1, Math.floor((y + r) / ch));
+      for (let cy = r0; cy <= r1; cy++) for (let cx = c0; cx <= c1; cx++) {
+        const i = cy * COLS + cx; if (!grade[i]) { grade[i] = 1; limpos++; }
+      }
+    }
+    function pincel(x, y) {
+      const r = Math.max(34, W * .11);
+      g.save();
+      g.globalCompositeOperation = 'destination-out';
+      const gr = g.createRadialGradient(x, y, 0, x, y, r);
+      gr.addColorStop(0, 'rgba(0,0,0,1)'); gr.addColorStop(.55, 'rgba(0,0,0,.9)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill();
+      g.restore();
+      marcar(x, y, r * .6);
+    }
+    function traco(x, y) {
+      if (!ultimo) { pincel(x, y); ultimo = { x, y }; return; }
+      const dx = x - ultimo.x, dy = y - ultimo.y, d = Math.hypot(dx, dy), passos = Math.max(1, Math.ceil(d / 9));
+      for (let i = 1; i <= passos; i++) pincel(ultimo.x + dx * i / passos, ultimo.y + dy * i / passos);
+      ultimo = { x, y };
+    }
+    const fracao = () => limpos / (COLS * ROWS);
+
+    function primeiroToque() {                    // som + sensor só podem começar dentro de um toque
+      if (primeiro) return; primeiro = true;
+      pedirSensor();
+      if (CONFIG.musica && Musica.iniciar()) btnMusica.hidden = false;
+    }
+    function esconderDica() { $('dica').classList.add('some'); }
+
+    function abrir() {
+      if (aberto) return; aberto = true;
+      arrastando = false;
+      esconderDica(); $('abrirAlt').classList.add('some');
+      gelo.classList.add('derrete');
+      if (navigator.vibrate) navigator.vibrate(12);
+      setTimeout(() => {
+        document.body.classList.remove('locked');
+        document.body.classList.add('aberto');
+        observar();
+      }, 500);
+      setTimeout(() => { gelo.remove(); $('dica').remove(); $('abrirAlt').remove(); }, 1900);
+    }
+
+    gelo.addEventListener('pointerdown', (e) => {
+      if (aberto) return;
+      arrastando = true; ultimo = null;
+      try { gelo.setPointerCapture(e.pointerId); } catch (_) {}
+      esconderDica(); traco(e.clientX, e.clientY);
+    });
+    gelo.addEventListener('pointermove', (e) => {
+      if (!arrastando || aberto) return;
+      traco(e.clientX, e.clientY);
+      if (fracao() > .42) { primeiroToque(); abrir(); }
+    });
+    const soltar = () => {
+      if (!arrastando) return;
+      arrastando = false; ultimo = null;
+      primeiroToque();
+      if (fracao() > .3) abrir();
+    };
+    gelo.addEventListener('pointerup', soltar);
+    gelo.addEventListener('pointercancel', soltar);
+    // reforço pro iPhone: o som destrava no fim do toque
+    gelo.addEventListener('touchend', () => primeiroToque(), { passive: true });
+
+    // botão alternativo: limpa o vidro sozinho numa passada e abre
+    $('abrirAlt').addEventListener('click', () => {
+      primeiroToque(); esconderDica(); $('abrirAlt').classList.add('some');
+      const t0 = performance.now(), dur = 900; ultimo = null;
+      (function passa(t) {
+        const p = Math.min(1, (t - t0) / dur);
+        const x = W * (.1 + .8 * p), y = H * (.5 + Math.sin(p * Math.PI * 3) * .12);
+        traco(x, y);
+        if (p < 1) requestAnimationFrame(passa); else abrir();
+      })(t0);
+    });
+
+    if (reduzir) { gelo.remove(); $('dica').remove(); $('abrirAlt').remove(); document.body.classList.remove('locked'); document.body.classList.add('aberto'); }
+    else pintarGelo();
+    let larguraAntes = innerWidth;
+    addEventListener('resize', () => {           // só repinta se girar o celular antes de abrir
+      if (!aberto && !reduzir && Math.abs(innerWidth - larguraAntes) > 40) { larguraAntes = innerWidth; pintarGelo(); }
+    });
+
+    /* ---------- Entrada suave das seções ao rolar ---------- */
+    function observar() {
+      const io = new IntersectionObserver((ents) => ents.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { threshold: .2, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('main .rv').forEach((el) => io.observe(el));
+    }
+    if (reduzir) observar();
+  </script>
+</body>
+</html>
